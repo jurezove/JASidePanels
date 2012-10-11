@@ -128,6 +128,7 @@
     self.rightGapPercentage = 0.8f;
     self.minimumMovePercentage = 0.15f;
     self.maximumAnimationDuration = 0.2f;
+    self.minimumAnimationDuration = 0.1f;
     self.bounceDuration = 0.1f;
     self.bouncePercentage = 0.075f;
     self.panningLimitedToTopViewController = YES;
@@ -621,6 +622,10 @@
 }
 
 #pragma mark - Animation
+
+- (CGFloat)animationDuration {
+    return [self _calculatedDuration];
+}
 
 - (CGFloat)_calculatedDuration {
     CGFloat remaining = fabsf(self.centerPanelContainer.frame.origin.x - _centerPanelRestingFrame.origin.x);	

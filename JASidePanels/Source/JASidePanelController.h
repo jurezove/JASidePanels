@@ -90,6 +90,7 @@ typedef enum _JASidePanelState {
 
 // the maximum time panel opening/closing should take. Actual time may be less if panGesture has already moved the view.
 @property (nonatomic) CGFloat maximumAnimationDuration;
+
 @property (nonatomic) CGFloat minimumAnimationDuration;
 
 // how long the bounce animation should take
@@ -119,6 +120,9 @@ typedef enum _JASidePanelState {
 
 // Default button to place in gestureViewControllers top viewController. Override in sublcass to change look of default button
 - (UIBarButtonItem *)leftButtonForCenterPanel;
+
+// Get animation duration so we can sync other animations
+- (CGFloat)animationDuration;
 
 #pragma mark - Nuts & Bolts
 
