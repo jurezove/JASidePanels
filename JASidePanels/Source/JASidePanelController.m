@@ -128,7 +128,7 @@
     self.rightGapPercentage = 0.8f;
     self.minimumMovePercentage = 0.15f;
     self.maximumAnimationDuration = 0.2f;
-    self.minimumAnimationDuration = 0.1f;
+    self.minimumAnimationDuration = 0.15f;
     self.bounceDuration = 0.1f;
     self.bouncePercentage = 0.075f;
     self.panningLimitedToTopViewController = YES;
