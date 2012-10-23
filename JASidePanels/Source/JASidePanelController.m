@@ -724,7 +724,13 @@
     [self _adjustCenterFrame];
     
     if (animated) {
-        [self _animateCenterPanel:shouldBounce completion:nil];
+        [self _animateCenterPanel:shouldBounce completion:^(BOOL finished) {
+            if (finished) {
+                if ([self.leftPanel respondsToSelector:@selector(panelShown)])
+                    [self.leftPanel performSelector:@selector(panelShown)];
+            }
+                
+        }];
     } else {
         self.centerPanelContainer.frame = _centerPanelRestingFrame;	
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
