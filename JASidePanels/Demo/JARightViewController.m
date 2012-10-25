@@ -31,8 +31,6 @@
 
 @interface JARightViewController ()
 
-@property (nonatomic, weak) UILabel *label;
-
 @end
 
 @implementation JARightViewController
@@ -40,19 +38,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor redColor];
+    self.label.text = @"Right Panel";
+    [self.label sizeToFit];
+    self.hide.frame = CGRectMake(self.view.bounds.size.width - 220.0f, 20.0f, 200.0f, 40.0f);
+    self.hide.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+    self.show.frame = self.hide.frame;
+    self.show.autoresizingMask = self.hide.autoresizingMask;
     
-    UILabel *label  = [[UILabel alloc] init];
-    label.font = [UIFont boldSystemFontOfSize:20.0f];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
-	label.text = @"Right Panel";
-	[label sizeToFit];
-	label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-	[self.view addSubview:label];
-    self.label = label;
+    self.removeRightPanel.hidden = YES;
+    self.addRightPanel.hidden = YES;
+    self.changeCenterPanel.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.label.center = CGPointMake(floorf((self.view.bounds.size.width - self.sidePanelController.rightVisibleWidth) + self.sidePanelController.rightVisibleWidth/2.0f), floorf(self.view.bounds.size.height/2.0f));
 }
 
