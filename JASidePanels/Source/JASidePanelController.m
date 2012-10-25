@@ -441,9 +441,20 @@
         }
         
         CGPoint translate = [pan translationInView:self.centerPanelContainer];
-        CGRect frame = _centerPanelRestingFrame;
-        frame.origin.x += [self _correctMovement:translate.x];
-        self.centerPanelContainer.frame = frame;
+//        CGRect frame = _centerPanelRestingFrame;
+        CGRect frame = self.centerPanelContainer.frame;
+//        CGFloat translationPoint = [self _correctMovement:translate.x];
+//        NSLog(@"Translation: %d", translationPoint);
+        frame.origin.x += translate.x;
+        [(UIPanGestureRecognizer*)sender setTranslation:CGPointZero inView:self.centerPanelContainer];
+//        [UIView animateWithDuration:0.1
+//                              delay:0
+//                            options:UIViewAnimationOptionCurveEaseInOut
+//                         animations:^{
+                                self.centerPanelContainer.frame = frame;
+//                         } completion:^(BOOL finished) {
+//                             
+//                         }];
         
         // if center panel has focus, make sure correct side panel is revealed
         if (self.state == JASidePanelCenterVisible) {
